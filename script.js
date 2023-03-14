@@ -24,10 +24,10 @@ function removeLoadingSpinner() {
 // get Qoute from  Api
 async function getQoute() {
     showloadingSpinner();
-    const apiUrl = "https://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=json";
-    try {
-        let response = await fetch( apiUrl);
+
+        let response = await fetch('https://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=json', { mode: 'no-cors' });
         let data = await response.json();
+        console.log('data',data)
         // if author is blank add 'Unknown'
         (data.quoteAuthor === '') ? authorText.innerText = 'Unknown' : authorText.innerText = data.quoteAuthor;
         quoteText.innerText = data.quoteText;
@@ -41,6 +41,7 @@ async function getQoute() {
 
         removeLoadingSpinner();
     } catch (error) {
+        quoteText.innerText = error;
         console.log('oops something went wrong', error);
     }
 }
