@@ -24,10 +24,9 @@ function removeLoadingSpinner() {
 // get Qoute from  Api
 async function getQoute() {
     showloadingSpinner();
-    const proxyUrl = "https://proxy-server-arvind.herokuapp.com/";
     const apiUrl = "https://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=json";
     try {
-        let response = await fetch(proxyUrl + apiUrl);
+        let response = await fetch( apiUrl);
         let data = await response.json();
         // if author is blank add 'Unknown'
         (data.quoteAuthor === '') ? authorText.innerText = 'Unknown' : authorText.innerText = data.quoteAuthor;
