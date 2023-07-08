@@ -26,6 +26,7 @@ async function getQoute() {
     showloadingSpinner();
     try{
         let response = await fetch('https://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=json', { mode: 'no-cors' });
+        console.log("response", response)
         let data = await response.json();
         console.log('data',data)
         // if author is blank add 'Unknown'
